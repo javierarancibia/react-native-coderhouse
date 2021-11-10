@@ -1,82 +1,91 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  TextInput,
   Button,
   FlatList,
-  Pressable,
+  StatusBar,
+  SafeAreaView,
 } from "react-native";
-import { useFonts } from "expo-font";
 import IntroText from "./IntroText.js";
 import ModalAlert from "./ModalAlert.js";
+import AptForm from "./AptForm.js";
 
 function Index() {
-  const [textValue, setTextValue] = useState("");
-  const [itemList, setItemList] = useState([]);
+  const [areaValue, setAreaValue] = useState(0);
+  const [bedroomTotal, setBedroomTotal] = useState(0);
+  const [apartmentList, setApartmentList] = useState([]);
   const [itemSelected, setItemSelected] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handleChangeText = (value) => {
-    setTextValue(value);
+  const handleChangeArea = (value) => {
+    setAreaValue(parseInt(value));
+  };
+
+  const handleChangeBedroom = (value) => {
+    setBedroomTotal(parseInt(value));
   };
 
   const handleAddItem = () => {
     const item = {
-      value: textValue,
-      id: Math.random().toString(),
+      area: areaValue,
+      bedroomTotal: bedroomTotal,
+      id: Math.random(6).toString(),
     };
-    setItemList([...itemList, item]);
-    setTextValue("");
+    setApartmentList([...apartmentList, item]);
+    setAreaValue("");
+    setBedroomTotal("");
   };
 
   const handleRemoveItem = (id) => {
     setModalVisible(true);
-    setItemSelected(itemList.find((item) => item.id === id));
+    setItemSelected(apartmentList.find((item) => item.id === id));
   };
 
   const handleRemoveConfirm = () => {
-    const newList = itemList.filter((item) => item.id !== itemSelected.id);
-    setItemList(newList);
+    const newList = apartmentList.filter((item) => item.id !== itemSelected.id);
+    setApartmentList(newList);
     setModalVisible(false);
     setItemSelected({});
   };
 
   return (
-    <View style={styles.screen}>
+    <View >
       <IntroText />
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Item de lista"
-          style={styles.input}
-          onChangeText={handleChangeText}
-          value={textValue}
-        />
-      </View>
-      <View style={styles.button}>
-        <Pressable onPress={handleAddItem}>
-          <Text style={{color: 'white'}}> Valoriza tu depa </Text>
-        </Pressable>
-      </View>
-      <View style={styles.items}>
-        <FlatList
-          data={itemList}
-          keyExtractor={(item) => item.id}
-          renderItem={(data) => (
-            <View style={styles.item} key={data.item.id}>
-              <Text>{data.item.value}</Text>
-              <Button
-                style={styles.button}
-                title="X"
-                onPress={() => handleRemoveItem(data.item.id)}
-              />
-            </View>
-          )}
-        />
-      </View>
-      <ModalAlert modalVisible={modalVisible} itemSelected={itemSelected} handleRemoveConfirm={handleRemoveConfirm} />
+      <AptForm
+        handleChangeArea={handleChangeArea}
+        handleChangeBedroom={handleChangeBedroom}
+        areaValue={areaValue}
+        bedroomTotal={bedroomTotal}
+        handleAddItem={handleAddItem}
+      />
+      <SafeAreaView style={styles.container}>
+          <FlatList
+            data={apartmentList}
+            keyExtractor={(item) => item.id}
+            renderItem={(data) => (
+              <View style={styles.item} key={data.item.id}>
+                <Text>Superficie: {data.item.area}</Text>
+                <Text>Dormitorios: {data.item.bedroomTotal}</Text>
+                <View style={{marginTop:20}}>
+                  <Button
+                    title="Borrar Info"
+                    onPress={() => handleRemoveItem(data.item.id)}
+                  />
+                  <Button
+                    title="Confirmar"
+                  />
+                </View>
+              </View>
+            )}
+          />
+      </SafeAreaView>
+      <ModalAlert
+        modalVisible={modalVisible}
+        itemSelected={itemSelected}
+        handleRemoveConfirm={handleRemoveConfirm}
+      />
     </View>
   );
 }
@@ -91,9 +100,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   input: {
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
-    width: 200,
+    borderColor: "black",
+    borderWidth: 1,
+    width: 100,
   },
   items: {
     backgroundColor: "#ECECEC",
@@ -102,14 +111,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   item: {
+    flex:1,
     padding: 10,
     marginTop: 10,
     marginBottom: 10,
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    borderColor: "black",
-    borderWidth: 1,
+    // borderColor: "black",
+    // borderWidth: 1,
+    // borderRadius:30,
+    marginVertical:8
   },
   button: {
     alignItems: "center",
@@ -119,7 +130,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     borderRadius: 45,
     backgroundColor: "#24A9EB",
-    marginTop: 30,
+    marginTop: 80,
     padding: 10,
   },
 });

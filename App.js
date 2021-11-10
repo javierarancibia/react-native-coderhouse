@@ -5,7 +5,6 @@ import Index from './components/Index.js'
 
 export default function App() {
 
-  const [ textValue, setTextValue] = useState('')
   const [load, setLoad] = useState(true)
 
   useEffect(() => {
