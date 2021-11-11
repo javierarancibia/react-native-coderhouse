@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Index from './components/Index.js'
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
 const styles = StyleSheet.create({
   screen: {
     padding: 30,
-    marginTop:130
+    marginTop:40
   }, 
   title: {
     alignItems: 'center', 

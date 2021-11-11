@@ -7,14 +7,18 @@ import {
   FlatList,
   StatusBar,
   SafeAreaView,
+  ScrollView
 } from "react-native";
 import IntroText from "./IntroText.js";
 import ModalAlert from "./ModalAlert.js";
 import AptForm from "./AptForm.js";
+// import { Icon } from 'react-native-elements'
 
 function Index() {
   const [areaValue, setAreaValue] = useState(0);
   const [bedroomTotal, setBedroomTotal] = useState(0);
+  const [bathroomTotal, setBathroomTotal] = useState(0);
+  const [city, setCity] = useState("");
   const [apartmentList, setApartmentList] = useState([]);
   const [itemSelected, setItemSelected] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
@@ -27,15 +31,27 @@ function Index() {
     setBedroomTotal(parseInt(value));
   };
 
+  const handleChangeBathroom = (value) => {
+    setBathroomTotal(parseInt(value));
+  };
+
+  const handleChangeCity = (value) => {
+    setCity(value);
+  };
+
   const handleAddItem = () => {
     const item = {
       area: areaValue,
       bedroomTotal: bedroomTotal,
+      bathroomTotal: bathroomTotal,
+      city: city,
       id: Math.random(6).toString(),
     };
     setApartmentList([...apartmentList, item]);
     setAreaValue("");
     setBedroomTotal("");
+    setBathroomTotal("");
+    setCity("");
   };
 
   const handleRemoveItem = (id) => {
@@ -51,13 +67,17 @@ function Index() {
   };
 
   return (
-    <View >
+    <ScrollView >
       <IntroText />
       <AptForm
         handleChangeArea={handleChangeArea}
         handleChangeBedroom={handleChangeBedroom}
+        handleChangeBathroom={handleChangeBathroom}
+        handleChangeCity={handleChangeCity}
         areaValue={areaValue}
         bedroomTotal={bedroomTotal}
+        bathroomTotal={bathroomTotal}
+        city={city}
         handleAddItem={handleAddItem}
       />
       <SafeAreaView style={styles.container}>
@@ -68,6 +88,8 @@ function Index() {
               <View style={styles.item} key={data.item.id}>
                 <Text>Superficie: {data.item.area}</Text>
                 <Text>Dormitorios: {data.item.bedroomTotal}</Text>
+                <Text>Baños: {data.item.bathroomTotal}</Text>
+                <Text>Ciudad: {data.item.city}</Text>
                 <View style={{marginTop:20}}>
                   <Button
                     title="Borrar Info"
@@ -86,7 +108,7 @@ function Index() {
         itemSelected={itemSelected}
         handleRemoveConfirm={handleRemoveConfirm}
       />
-    </View>
+    </ScrollView>
   );
 }
 
