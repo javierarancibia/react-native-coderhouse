@@ -29,7 +29,7 @@ function IntroText() {
 const styles = StyleSheet.create({
   screen: {
     padding: 30,
-    marginTop: 100,
+    marginTop: 130,
   },
   text: {
     alignItems: "center",

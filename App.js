@@ -1,21 +1,23 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Index from "./components/Index.js";
+import Home from "./components/Home.js";
 import ApartmentProfile from "./components/ApartmentProfile.js";
+import UfApiCall from "./components/UfApiCall.js";
 import * as Progress from "react-native-progress";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
 export default function App() {
-  const [load, setLoad] = useState(true);
+  // const [load, setLoad] = useState(true);
   const [apartment, setApartment] = useState("");
 
   const [loaded] = useFonts({
-    'Lato-Regular': require("./assets/fonts/Lato/Lato-Regular.ttf"),
+    "Lato-Regular": require("./assets/fonts/Lato/Lato-Regular.ttf"),
   });
 
   if (!loaded) return <AppLoading />;
+  console.log(loaded);
 
   // useEffect(() => {
   //   setTimeout(() => {
@@ -32,7 +34,12 @@ export default function App() {
   // );
 
   // if (load === false && !apartment) {
-    let content = <Index onGetApartment={handleApartment} />;
+  let content = (
+    <View>
+      <UfApiCall />
+      <Home onGetApartment={handleApartment} />
+    </View>
+  );
   // }
 
   if (apartment) {
