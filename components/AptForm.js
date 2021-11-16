@@ -1,11 +1,32 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Pressable,
+  Picker,
+} from "react-native";
 
 const AptForm = (props) => {
   const [areaValue, setAreaValue] = useState(0);
   const [bedroomTotal, setBedroomTotal] = useState(0);
   const [bathroomTotal, setBathroomTotal] = useState(0);
   const [city, setCity] = useState("");
+  const [regions, setRegions] = useState();
+
+  useEffect(() => {
+    fetch("https://apis.digital.gob.cl/dpa/comunas")
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Request failed");
+      })
+      .then((responseJson) => {
+        return setRegions(responseJson);
+      });
+  }, []);
 
   const handleChangeArea = (value) => {
     setAreaValue(parseInt(value));
@@ -17,10 +38,6 @@ const AptForm = (props) => {
 
   const handleChangeBathroom = (value) => {
     setBathroomTotal(parseInt(value));
-  };
-
-  const handleChangeCity = (value) => {
-    setCity(value);
   };
 
   const handleAddItem = () => {
@@ -69,12 +86,21 @@ const AptForm = (props) => {
       </View>
 
       <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Ciudad"
+        <Picker
+          selectedValue={city}
           style={styles.input}
-          onChangeText={handleChangeCity}
-          value={city}
-        />
+          onValueChange={(itemValue, itemIndex) => setCity(itemValue)}
+        >
+          <Picker.Item label="Elige una ciudad" />
+          {regions &&
+            regions.map((city) => (
+              <Picker.Item
+                id={city.codigo}
+                label={city.nombre}
+                value={city.nombre}
+              />
+            ))}
+        </Picker>
       </View>
 
       <View style={styles.button}>

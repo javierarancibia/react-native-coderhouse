@@ -26,11 +26,11 @@ const ApartmentProfile = (props) => {
           }}
         />
       <Text style={styles.title}>Perfil Apartamento</Text>
-      <View style={styles.text}>
-        <Text>Superficie: {props.apartment.area}</Text>
-        <Text>Dormitorios: {props.apartment.bedroomTotal}</Text>
-        <Text>Baños: {props.apartment.bathroomTotal}</Text>
-        <Text>Ciudad: {props.apartment.city}</Text>
+      <View>
+        <Text style={styles.text}>Superficie: {props.apartment.area} m2</Text>
+        <Text style={styles.text}>Dormitorios: {props.apartment.bedroomTotal}</Text>
+        <Text style={styles.text}>Baños: {props.apartment.bathroomTotal}</Text>
+        <Text style={styles.text}>Ciudad: {props.apartment.city}</Text>
       </View>
 
 
@@ -75,9 +75,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Regular'
   },
   text: {
-    color: "#24A9EB",
-    fontSize: 30,
-    marginBottom: 35,
+    color: "black",
+    fontSize: 20,
   },
 });
 
