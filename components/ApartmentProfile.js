@@ -18,7 +18,7 @@ const ApartmentProfile = (props) => {
 
   return (
     <View style={styles.screen}>
-      <Text>Perfil Apartamento</Text>
+      <Text style={styles.text}>Perfil Apartamento</Text>
       <Text>Superficie: {props.apartment.area}</Text>
       <Text>Dormitorios: {props.apartment.bedroomTotal}</Text>
       <Text>Baños: {props.apartment.bathroomTotal}</Text>
@@ -51,6 +51,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#24A9EB",
     marginTop: 30,
     padding: 10,
+  },
+  text: {
+    alignItems: "center",
+    color: "#24A9EB",
+    fontSize: 25,
+    marginBottom: 35,
+    fontFamily: 'Lato-Regular'
   },
 });
 

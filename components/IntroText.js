@@ -1,21 +1,22 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
 function IntroText() {
   return (
     <View>
-      <View style={{
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Image
           source={require("../assets/header_image.png")}
           style={{
             width: 190,
             height: 190,
           }}
-          
         />
       </View>
       <Text style={styles.text}>
