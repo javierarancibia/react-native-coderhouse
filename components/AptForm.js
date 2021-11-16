@@ -1,14 +1,7 @@
-import React, {useState} from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Pressable,
-} from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
 
 const AptForm = (props) => {
-
   const [areaValue, setAreaValue] = useState(0);
   const [bedroomTotal, setBedroomTotal] = useState(0);
   const [bathroomTotal, setBathroomTotal] = useState(0);
@@ -38,14 +31,12 @@ const AptForm = (props) => {
       city: city,
       id: Math.random(6).toString(),
     };
-    props.onGetApartmentData(item)
+    props.onGetApartmentData(item);
     setAreaValue("");
     setBedroomTotal("");
     setBathroomTotal("");
     setCity("");
-  }; 
-
-
+  };
 
   return (
     <View>
