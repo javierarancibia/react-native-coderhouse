@@ -1,29 +1,24 @@
 import React from "react";
-import {
-  Modal,
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-} from "react-native";
+import { Modal, StyleSheet, Text, View, Pressable } from "react-native";
 
 const ModalAlert = (props) => {
   return (
-      <Modal visible={props.modalVisible} animationType="slide" style={styles.screen}>
-        <View>
-          <View style={styles.confirmText}>
-            <Text>¿Está seguro que desea borrar?</Text>
-          </View>
-          <View>
-            <Text>{props.itemSelected.value}</Text>
-          </View>
+    <Modal
+      visible={props.modalVisible}
+      animationType="slide"
+      style={styles.screen}
+    >
+      <View>
+        <View style={styles.confirmText}>
+          <Text>¿Está seguro que desea borrar?</Text>
         </View>
-        <View style={styles.button}>
-          <Pressable onPress={props.handleRemoveConfirm}>
-            <Text style={{color: 'white'}}>Confirma</Text>
-          </Pressable>
-        </View>
-      </Modal>
+      </View>
+      <View style={styles.button}>
+        <Pressable onPress={props.handleRemoveConfirm}>
+          <Text style={{ color: "white" }}>Confirma</Text>
+        </Pressable>
+      </View>
+    </Modal>
   );
 };
 
@@ -46,8 +41,8 @@ const styles = StyleSheet.create({
     borderRadius: 45,
     backgroundColor: "#24A9EB",
     marginTop: 30,
-    color: 'white',
-    margin: 50
+    color: "white",
+    margin: 50,
   },
 });
 

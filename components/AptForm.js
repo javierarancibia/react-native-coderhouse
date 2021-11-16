@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   StyleSheet,
   Text,
@@ -8,6 +8,45 @@ import {
 } from "react-native";
 
 const AptForm = (props) => {
+
+  const [areaValue, setAreaValue] = useState(0);
+  const [bedroomTotal, setBedroomTotal] = useState(0);
+  const [bathroomTotal, setBathroomTotal] = useState(0);
+  const [city, setCity] = useState("");
+
+  const handleChangeArea = (value) => {
+    setAreaValue(parseInt(value));
+  };
+
+  const handleChangeBedroom = (value) => {
+    setBedroomTotal(parseInt(value));
+  };
+
+  const handleChangeBathroom = (value) => {
+    setBathroomTotal(parseInt(value));
+  };
+
+  const handleChangeCity = (value) => {
+    setCity(value);
+  };
+
+  const handleAddItem = () => {
+    const item = {
+      area: areaValue,
+      bedroomTotal: bedroomTotal,
+      bathroomTotal: bathroomTotal,
+      city: city,
+      id: Math.random(6).toString(),
+    };
+    props.onGetApartmentData(item)
+    setAreaValue("");
+    setBedroomTotal("");
+    setBathroomTotal("");
+    setCity("");
+  }; 
+
+
+
   return (
     <View>
       <View style={styles.inputContainer}>
@@ -15,8 +54,8 @@ const AptForm = (props) => {
           placeholder="Superficie"
           keyboardType="numeric"
           style={styles.input}
-          onChangeText={props.handleChangeArea}
-          value={props.areaValue}
+          onChangeText={handleChangeArea}
+          value={areaValue}
         />
       </View>
       <View style={styles.inputContainer}>
@@ -24,8 +63,8 @@ const AptForm = (props) => {
           placeholder="Numero de Dormitorios"
           keyboardType="numeric"
           style={styles.input}
-          onChangeText={props.handleChangeBedroom}
-          value={props.bedroomTotal}
+          onChangeText={handleChangeBedroom}
+          value={bedroomTotal}
         />
       </View>
       <View style={styles.inputContainer}>
@@ -33,8 +72,8 @@ const AptForm = (props) => {
           placeholder="Numero de Baños"
           keyboardType="numeric"
           style={styles.input}
-          onChangeText={props.handleChangeBathroom}
-          value={props.bathroomTotal}
+          onChangeText={handleChangeBathroom}
+          value={bathroomTotal}
         />
       </View>
 
@@ -42,13 +81,13 @@ const AptForm = (props) => {
         <TextInput
           placeholder="Ciudad"
           style={styles.input}
-          onChangeText={props.handleChangeCity}
-          value={props.city}
+          onChangeText={handleChangeCity}
+          value={city}
         />
       </View>
 
       <View style={styles.button}>
-        <Pressable onPress={props.handleAddItem}>
+        <Pressable onPress={handleAddItem}>
           <Text style={{ color: "white" }}> Valoriza tu depa </Text>
         </Pressable>
       </View>
