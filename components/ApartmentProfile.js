@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     color: "#24A9EB",
     fontSize: 25,
     marginBottom: 35,
-    fontFamily: 'Lato-Regular'
   },
   text: {
     color: "black",

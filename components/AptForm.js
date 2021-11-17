@@ -95,7 +95,7 @@ const AptForm = (props) => {
           {regions &&
             regions.map((city) => (
               <Picker.Item
-                id={city.codigo}
+                key={city.codigo}
                 label={city.nombre}
                 value={city.nombre}
               />
