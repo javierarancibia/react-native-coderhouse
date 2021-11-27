@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Index from "./components/Index.js"
+import Index from "./aptComponents/Index.js"
 
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
