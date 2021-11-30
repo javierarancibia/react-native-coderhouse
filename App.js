@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-// import Intro from "./aptComponents/Intro.js";
-import MainNavigator from './navigation/MainNavigator.js';
-import { StatusBar } from 'expo-status-bar';
+import MainNavigator from "./navigation/MainNavigator.js";
+import { StatusBar } from "expo-status-bar";
 
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
@@ -13,15 +12,13 @@ export default function App() {
   });
 
   if (!loaded) return <AppLoading />;
-  console.log(loaded);
 
-  // return <Intro />
   return (
     <>
-      <MainNavigator /> 
+      <MainNavigator />
       <StatusBar style="auto" />
     </>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

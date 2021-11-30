@@ -1,39 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import axios from "axios";
 
-const OptionScreen = ({ navigation }) => {
-  const [allRecipes, setAllRecipes] = useState();
+const OptionScreen = ({ route, navigation }) => {
   const [randomRecipe, setRandomRecipe] = useState();
 
+  const { name, baseURL } = route.params;
+  console.log(baseURL);
+
   useEffect(() => {
-    const APP_ID = "03b6c229";
-    const API_KEY = "eaffd9d455270ea2f35fc2f0e8fe6d14";
     axios
-      .get(
-        `https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=&app_id=03b6c229&app_key=eaffd9d455270ea2f35fc2f0e8fe6d14&mealType=Lunch`
-      )
+      .get(baseURL)
       .then(function (response) {
-        setAllRecipes(response.data.hits);
-        //   setRandomRecipe(setAllRecipes[Math.floor(Math.random()*80) + 1]);
-        setRandomRecipe(response.data.hits[19]);
+        setRandomRecipe(response.data.hits[0]);
       })
       .catch(function (error) {
         console.error(error);
       });
   }, []);
 
-  console.log(randomRecipe);
-
   return (
     <View style={styles.screen}>
-      <Text>{randomRecipe && randomRecipe.recipe.label} </Text>
-      <Button
-        title="Guardar la Receta"
+      {randomRecipe && (
+        <Image
+          source={{ uri: randomRecipe.recipe.images.REGULAR.url }}
+          style={{
+            width: 320,
+            height: 320,
+            borderRadius: 25,
+          }}
+        />
+      )}
+      <Text style={styles.text}>
+        {randomRecipe && randomRecipe.recipe.label}{" "}
+      </Text>
+
+      <Pressable
+        style={styles.button}
         onPress={() => {
           navigation.navigate("Detail");
         }}
-      />
+      >
+        <Text style={{color:'white', fontSize:15, fontFamily:'Lato-Regular'}}>Guardar Receta a mi Lista</Text>
+      </Pressable>
     </View>
   );
 };
@@ -41,8 +50,23 @@ const OptionScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    paddingTop:25
+  },
+  text: {
+    fontSize: 20,
+    marginHorizontal: 10,
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    elevation: 3,
+    borderRadius: 45,
+    backgroundColor: "orange",
+    marginTop: 30,
+    padding: 10,
   },
 });
 

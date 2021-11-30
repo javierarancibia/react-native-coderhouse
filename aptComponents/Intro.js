@@ -16,20 +16,6 @@ const Index = () => {
       setLoad(false);
     }, 2000);
   }, []);
-  console.log(load);
-
-  useEffect(() => {
-
-    const APP_ID = "03b6c229"
-    const API_KEY = "eaffd9d455270ea2f35fc2f0e8fe6d14"
-    axios.get(`https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=breakfast&app_id=03b6c229&app_key=eaffd9d455270ea2f35fc2f0e8fe6d14&mealType=Breakfast`)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
 
   const handleApartment = (finalApartment) => {
     setApartment(finalApartment);
