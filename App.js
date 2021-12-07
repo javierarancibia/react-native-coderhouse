@@ -5,6 +5,8 @@ import { StatusBar } from "expo-status-bar";
 
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import { Provider } from 'react-redux';
+import store  from './store'
 
 export default function App() {
   const [loaded] = useFonts({
@@ -14,10 +16,10 @@ export default function App() {
   if (!loaded) return <AppLoading />;
 
   return (
-    <>
+    <Provider store={store}>
       <MainNavigator />
       <StatusBar style="auto" />
-    </>
+    </Provider>
   );
 }
 
