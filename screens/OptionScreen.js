@@ -16,8 +16,16 @@ const OptionScreen = ({ route, navigation }) => {
   const handleSaveRecipe = (item) => {
     {
       randomRecipe && dispatch(saveRecipe(item));
-      navigation.navigate("Detail");
+      navigation.navigate("Detail", {
+        randomRecipe: randomRecipe,
+      });
     }
+  };
+
+  const handleMoveToRecipe = () => {
+    navigation.navigate("Detail", {
+      randomRecipe: randomRecipe,
+    });
   };
 
   useEffect(() => {
@@ -29,6 +37,7 @@ const OptionScreen = ({ route, navigation }) => {
       .catch(function (error) {
         console.error(error);
       });
+      return () => axios.isCancel()
   }, []);
 
   return (
@@ -58,10 +67,17 @@ const OptionScreen = ({ route, navigation }) => {
                 image: randomRecipe.recipe.images.REGULAR.url,
                 name: randomRecipe.recipe.label,
               })
-              
             }
           >
             Guardar Receta a mi Lista
+          </Text>
+        </Pressable>
+      )}
+
+      {randomRecipe && (
+        <Pressable style={styles.button} disabled={true}>
+          <Text style={styles.buttonText} onPress={handleMoveToRecipe}>
+            Ver
           </Text>
         </Pressable>
       )}
