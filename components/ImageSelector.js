@@ -6,13 +6,13 @@ import { saveImage } from "../store/actions/recipes.actions";
 // import * as Permissions from "expo-permissions";
 
 
+
 const ImageSelector = (props) => {
   const [pickedUri, setPickedUri] = useState();
   const dispatch = useDispatch()
 
   const verifyPermissions = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    console.log(props.imageUrl)
 
     if (status !== "granted") {
       Alert.alert(
@@ -34,19 +34,14 @@ const ImageSelector = (props) => {
       aspect: [16, 9],
       quality: 0.8,
     });
-
-    setPickedUri(image.uri);
-    pickedUri && dispatch(saveImage(pickedUri, props.itemId))
+    
+    dispatch(saveImage(image.uri, props.itemId))
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.preview}>
-        {/* {!pickedUri ? ( */}
           <Image style={styles.image} source={{ uri: props.imageUrl }} />
-        {/* ) : (
-          <Image style={styles.image} source={{ uri: pickedUri }} />
-        )} */}
       </View>
       <Button
         title="Tomar Foto"

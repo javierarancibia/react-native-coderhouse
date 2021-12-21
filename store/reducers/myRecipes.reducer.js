@@ -43,15 +43,13 @@ const MyRecipesReducer = (state = initialState, action) => {
       };
 
     case SAVE_IMAGE:
-      const selectedRecipe = state.list.findIndex(
+      const index = state.list.findIndex(
         (item) => item.itemId === action.recipe.itemId
       );
-      const newList = [...state.list];
-      newList[selectedRecipe].image = action.recipe.image;
-      console.log(newList)
+      console.log(action.recipe.image)
       return {
         ...state,
-        list: [state.list, newList]
+        list: [...state.list, ...state.list[index].image = action.recipe.image  ],
       };
     default:
       return state;

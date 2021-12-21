@@ -11,7 +11,7 @@ const DetailScreen = ({ route }) => {
   return (
     <View style={styles.screen}>
       <Text style={{marginBottom:80}}>{filteredRecipes.name}</Text>
-      <ImageSelector imageUrl={filteredRecipes.image} itemId={filteredRecipes.itemId}/>
+      <ImageSelector imageUrl={filteredRecipes.image} itemId={filteredRecipes.itemId} />
     </View>
   );
 };
