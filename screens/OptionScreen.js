@@ -37,7 +37,7 @@ const OptionScreen = ({ route, navigation }) => {
       .catch(function (error) {
         console.error(error);
       });
-      return () => axios.isCancel()
+      // return () => axios.isCancel()
   }, []);
 
   return (

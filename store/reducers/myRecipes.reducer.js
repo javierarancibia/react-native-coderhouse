@@ -48,9 +48,10 @@ const MyRecipesReducer = (state = initialState, action) => {
       );
       const newList = [...state.list];
       newList[selectedRecipe].image = action.recipe.image;
+      console.log(newList)
       return {
         ...state,
-        list: [newList],
+        list: [state.list, newList]
       };
     default:
       return state;
