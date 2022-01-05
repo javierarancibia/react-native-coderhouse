@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
             }}
           >
             <Image
-              source={require("../assets/cooking.jpg")}
+              source={item.image}
               style={styles.image}
             />
             <Text style={styles.text}>{item.name}</Text>

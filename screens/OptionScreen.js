@@ -77,7 +77,7 @@ const OptionScreen = ({ route, navigation }) => {
       {randomRecipe && (
         <Pressable style={styles.button} disabled={true}>
           <Text style={styles.buttonText} onPress={handleMoveToRecipe}>
-            Ver
+            Solo ver receta
           </Text>
         </Pressable>
       )}
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     elevation: 3,
     borderRadius: 45,
-    backgroundColor: "orange",
+    backgroundColor: "#F08080",
     marginTop: 30,
     padding: 10,
   },

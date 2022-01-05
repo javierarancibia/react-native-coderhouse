@@ -9,11 +9,26 @@ const Stack = createNativeStackNavigator();
 
 const OptionsNavigator = () => {
   return (
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Option" component={OptionScreen} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
-      </Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerStyle: { backgroundColor: "#F08080"}, headerTintColor: 'white', headerTitleStyle:{fontWeight: 'bold'} }}
+    >
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ title: "¿Que quieres cocinar?" }}
+      />
+      <Stack.Screen
+        name="Option"
+        component={OptionScreen}
+        options={{ title: "Nuestra propuesta" }}
+      />
+      <Stack.Screen
+        name="Detail"
+        component={DetailScreen}
+        options={{ title: "Detalle de la receta" }}
+      />
+    </Stack.Navigator>
   );
 };
 
