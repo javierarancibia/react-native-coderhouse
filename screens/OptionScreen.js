@@ -66,6 +66,7 @@ const OptionScreen = ({ route, navigation }) => {
                 itemId: Math.random(3),
                 image: randomRecipe.recipe.images.REGULAR.url,
                 name: randomRecipe.recipe.label,
+                ingredients: randomRecipe.recipe.ingredientLines
               })
             }
           >

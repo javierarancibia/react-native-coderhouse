@@ -1,17 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  FlatList,
+} from "react-native";
 import { CATEGORIES } from "../data/categories";
 
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.screen}>
-      <View style={{ marginBottom: 25 }}>
-        <Image
-          source={require("../assets/cooking.jpg")}
-          style={{ resizeMode: "cover", height: 100, width: 200 }}
-        />
-      </View>
-
       <FlatList
         data={CATEGORIES}
         keyExtractor={(item) => item.id}
@@ -25,10 +25,7 @@ const HomeScreen = ({ navigation }) => {
               });
             }}
           >
-            <Image
-              source={item.image}
-              style={styles.image}
-            />
+            <Image source={item.image} style={styles.image} />
             <Text style={styles.text}>{item.name}</Text>
           </TouchableOpacity>
         )}
@@ -42,34 +39,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 22,
-    paddingHorizontal: 52,
-    elevation: 3,
-    borderRadius: 15,
-    backgroundColor: "orange",
-    marginTop: 30,
-    padding: 10,
-    fontFamily: "Lato-Regular",
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "white",
+    padding: 20
   },
   image: {
-    height: 120,
+    height: 140,
     width: 300,
-    borderRadius: 25,
+    borderRadius: 35,
     marginBottom: 25,
+    shadowColor: "black",
   },
   text: {
     color: "white",
-    fontSize: 20,
+    fontSize: 25,
     position: "absolute",
+    padding: 10,
   },
 });
 

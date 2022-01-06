@@ -13,6 +13,7 @@ import { selectCategory } from "../store/actions/category.actions";
 const MyRecipesScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.Categories.Categories);
+  console.log(categories)
 
   const handleSelectCategory = (item) => {
     dispatch(selectCategory(item.id));

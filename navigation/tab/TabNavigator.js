@@ -17,7 +17,7 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: "Inicio",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={'orange'} size={26} />
+            <MaterialCommunityIcons name="home" color={'#F08080'} size={26} />
           ),
         }}
       />
@@ -27,7 +27,7 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: "Mis Recetas",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="pizza" color={'orange'} size={26} />
+            <MaterialCommunityIcons name="pizza" color={'#F08080'} size={26} />
           ),
         }}
       />

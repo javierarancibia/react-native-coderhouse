@@ -46,7 +46,7 @@ const ImageSelector = (props) => {
       <Button
         title="Tomar Foto"
         style={styles.button}
-        color={"orange"}
+        color={"#F08080"}
         onPress={handlerTakeImage}
       />
     </View>
@@ -64,11 +64,12 @@ const styles = StyleSheet.create({
     borderColor: "blue",
   },
   image: {
-    width: 320,
-    height: 320,
+    width: 200,
+    height: 200,
   },
   button:{
-      marginTop:50
+      marginTop:50,
+      borderRadius: 25
   }
 });
 
