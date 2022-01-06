@@ -64,12 +64,12 @@ const styles = StyleSheet.create({
     borderColor: "blue",
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
   },
   button:{
       marginTop:50,
-      borderRadius: 25
+      borderRadius: 25,
   }
 });
 

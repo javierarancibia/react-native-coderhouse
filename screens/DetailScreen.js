@@ -24,8 +24,8 @@ const DetailScreen = ({ route }) => {
               marginBottom: 5,
             }}
           />
-          {randomRecipe.recipe.ingredientLines.map((ing, index) => (
-            <Text key={index}>{ing}</Text>
+          {randomRecipe.recipe.ingredientLines.map((ing) => (
+            <Text key={ing} style={styles.list}>{ing}</Text>
           ))}
         </ScrollView>
       </SafeAreaView>
@@ -36,13 +36,18 @@ const DetailScreen = ({ route }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 25,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
+    padding: 55,
   },
   text: {
     fontSize: 20,
     marginHorizontal: 10,
+    padding: 10,
+    marginBottom: 30
+  },
+  list: {
+    padding: 3,
   },
 });
 
