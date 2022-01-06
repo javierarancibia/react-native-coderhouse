@@ -30,6 +30,7 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         )}
       ></FlatList>
+      <Image source={require('../assets/header.png')} style={{height:80, width:80}} /> 
     </View>
   );
 };

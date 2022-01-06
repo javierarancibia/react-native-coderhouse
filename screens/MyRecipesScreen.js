@@ -31,7 +31,7 @@ const MyRecipesScreen = ({ navigation }) => {
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => handleSelectCategory(item)}>
               <Image
-                source={require("../assets/cooking.jpg")}
+                source={item.image}
                 style={styles.image}
               />
               <Text style={styles.text}>{item.name}</Text>
@@ -39,6 +39,7 @@ const MyRecipesScreen = ({ navigation }) => {
           )}
         ></FlatList>
       </View>
+      <Text style={styles.title}>Revisa tus recetas guardadas</Text>
     </View>
   );
 };
@@ -78,6 +79,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     position: "absolute",
   },
+  title: {
+    fontSize: 20,
+    marginHorizontal: 10,
+    padding: 10,
+    marginBottom: 30
+  }
 });
 
 export default MyRecipesScreen;
