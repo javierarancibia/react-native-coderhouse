@@ -7,6 +7,6 @@
 
 ![linkexpo](https://user-images.githubusercontent.com/69688629/148476251-558d08d1-d397-4d8c-a831-e525853fed28.png)
 
-![expoapp1](https://user-images.githubusercontent.com/69688629/151177957-a63e2bcc-7c2e-45cc-b51b-5c95530f60a9.png)
 
-![expoapp2](https://user-images.githubusercontent.com/69688629/151178098-13e65829-bdce-4f62-a950-8e984b316079.png)
+![expoapp](https://user-images.githubusercontent.com/69688629/151179890-9f9d7454-5c29-4fa6-b6b3-35b4a0b4a251.png)
+
